@@ -113,6 +113,17 @@ paths:
                 '500':
                     description: Internal Server Error
     /user/{accountId}/transactions:
+        parameters:
+            - in: header
+              name: Authorization
+              description: Attach Bearer JWT token
+              required: true
+              type: string
+            - in: path
+              name: accountId
+              description: Account ID
+              required: true
+              type: string
         get:
             security:
                 - Bearer: []
@@ -120,17 +131,6 @@ paths:
                 - User Transactions
             summary: User specific account transactions list API
             description: API for getting user's specific account transactions list
-            parameters:
-                - in: header
-                  name: Authorization
-                  description: Attach Bearer JWT token
-                  required: true
-                  type: string
-                - in: header
-                  name: Account ID
-                  description: Account ID
-                  required: true
-                  type: string
             produces:
                 - application/json
             responses:
@@ -144,7 +144,24 @@ paths:
                     description: Transaction not found
                 '500':
                     description: Internal Server Error
+
     /user/{accountId}/transactions/{transactionId}:
+        parameters:
+            - in: header
+              name: Authorization
+              description: Attach Bearer JWT token
+              required: true
+              type: string
+            - in: path
+              name: accountId
+              description: Account ID
+              required: true
+              type: string
+            - in: path
+              name: transactionId
+              description: ID of the transaction
+              required: true
+              type: string
         get:
             security:
                 - Bearer: []
@@ -152,22 +169,6 @@ paths:
                 - User Transactions
             summary: User transaction details API
             description: API for getting user's specific transactions details
-            parameters:
-                - in: header
-                  name: Authorization
-                  description: Attach Bearer JWT token
-                  required: true
-                  type: string
-                - in: path
-                  name: transactionId
-                  description: ID of the transaction
-                  required: true
-                  type: string
-                - in: header
-                  name: Account ID
-                  description: Account ID
-                  required: true
-                  type: string
             produces:
                 - application/json
             responses:
@@ -188,22 +189,6 @@ paths:
                 - User Transactions
             summary: User update specific transaction details API
             description: API updating the details for a specific transaction
-            parameters:
-                - in: header
-                  name: Authorization
-                  description: Attach Bearer JWT token
-                  required: true
-                  type: string
-                - in: header
-                  name: Account ID
-                  description: Account ID
-                  required: true
-                  type: string
-                - in: path
-                  name: transactionId
-                  description: ID of the transaction
-                  required: true
-                  type: string
             produces:
                 - application/json
             responses:
