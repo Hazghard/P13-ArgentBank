@@ -262,6 +262,8 @@ definitions:
                 type: string
             accountName:
                 type: string
+            balance:
+                type: number
 
     TransactionsResponse:
         type: object
