@@ -112,7 +112,7 @@ paths:
                     description: Invalid Fields
                 '500':
                     description: Internal Server Error
-    /user/transactions:
+    /user/{accountId}/transactions:
         get:
             security:
                 - Bearer: []
@@ -124,6 +124,11 @@ paths:
                 - in: header
                   name: Authorization
                   description: Attach Bearer JWT token
+                  required: true
+                  type: string
+                - in: header
+                  name: Account ID
+                  description: Account ID
                   required: true
                   type: string
             produces:
@@ -139,7 +144,7 @@ paths:
                     description: Transaction not found
                 '500':
                     description: Internal Server Error
-    /user/transactions/{transactionId}:
+    /user/{accountId}/transactions/{transactionId}:
         get:
             security:
                 - Bearer: []
@@ -156,6 +161,11 @@ paths:
                 - in: path
                   name: transactionId
                   description: ID of the transaction
+                  required: true
+                  type: string
+                - in: header
+                  name: Account ID
+                  description: Account ID
                   required: true
                   type: string
             produces:
@@ -182,6 +192,11 @@ paths:
                 - in: header
                   name: Authorization
                   description: Attach Bearer JWT token
+                  required: true
+                  type: string
+                - in: header
+                  name: Account ID
+                  description: Account ID
                   required: true
                   type: string
                 - in: path
